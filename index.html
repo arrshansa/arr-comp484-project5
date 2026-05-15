@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSUN Campus Map Quiz</title>
+
+  <!-- Google Maps JavaScript API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVGDNBAG552k4XyRFiO73xFtqXuLRJB_8"></script>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <!-- Our stylesheet -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div>
+      <div class="header-logo">CSUN <span>Campus</span> Quiz</div>
+      <div class="header-subtitle">Map Location Challenge</div>
+    </div>
+    <div class="header-stats">
+      <div class="stat-box">
+        <div class="val" id="timer-val">0:00</div>
+        <div class="lbl">Time</div>
+      </div>
+      <div class="stat-box">
+        <div class="val" id="correct-val">0</div>
+        <div class="lbl">Correct</div>
+      </div>
+      <div class="stat-box">
+        <div class="val" id="wrong-val">0</div>
+        <div class="lbl">Wrong</div>
+      </div>
+      <div class="stat-box">
+        <div class="val" id="streak-val">0</div>
+        <div class="lbl">Streak</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- App Body -->
+  <div class="app-body">
+
+    <!-- Side Panel -->
+    <div id="side-panel">
+      <div class="panel-section">
+        <h2>Current Question</h2>
+        <div id="q-number">Question 1 of 5</div>
+        <div id="current-q">Loading…</div>
+        <div class="progress-dots" id="progress-dots"></div>
+      </div>
+
+      <div class="panel-section" id="feedback-section" style="display:none;">
+        <div id="feedback"></div>
+      </div>
+
+      <div id="answer-log"></div>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map-container">
+      <div id="map-hint">⬤ Double-click on the map to place your answer</div>
+      <div id="streak-toast"> ON FIRE!</div>
+      <div id="map"></div>
+
+      <!-- Game Over Overlay -->
+      <div id="game-over-overlay">
+        <div class="score-card">
+          <h1>Quiz Complete</h1>
+          <div class="grade" id="grade-badge">A</div>
+          <div class="score-big">
+            <span class="c" id="final-correct">0</span>
+            <span class="sep">/</span>
+            <span class="w" id="final-total">5</span>
+          </div>
+          <div class="score-label">locations identified correctly</div>
+          <div class="time-taken" id="time-taken">Time: 0:00</div>
+          <div class="hs-row" id="hs-row" style="display:none;">
+            <span>🏆 New Best Time:</span>
+            <strong id="hs-display">—</strong>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="restartGame()">Play Again</button>
+            <button class="btn btn-ghost" onclick="showResults()">See Map</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .app-body -->
+
+  <!-- Our script -->
+  <script src="script.js"></script>
+
+</body>
+</html>
